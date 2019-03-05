@@ -1,0 +1,41 @@
+homeassistant:
+  name: Home
+  latitude: 30.580100000000002
+  longitude: 114.2734
+  elevation: 0
+  unit_system: metric
+  time_zone: Asia/Shanghai
+  customize: !include customize.yaml
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Sensors
+sensor:
+  - platform: iio_dht
+    scan_interval: 600
+
+switch:
+  - platform: direct_gpio
+    name: GPIO26
+    port: 26
+    inverted: false
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+homekit:
+
+frontend:
+
+config:
+
+logbook:
+
+device_tracker:
+  - platform: luci
+    host: 127.0.0.1
+    username: root
+    password: 583716 
+

@@ -1,0 +1,20 @@
+# ignore everything
+*
+
+!*.yaml
+!.gitignore
+!.gitmodules
+!*.md
+!/custom_components/
+!/custom_components/*
+!/custom_components/**
+
+
+.storage
+.cloud
+.google.token
+
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
+
