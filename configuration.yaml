@@ -7,10 +7,8 @@ homeassistant:
   time_zone: Asia/Shanghai
   customize: !include customize.yaml
 
-# Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-# Sensors
 sensor:
   - platform: iio_dht
     scan_interval: 150
@@ -32,4 +30,14 @@ frontend:
 config:
 
 logbook:
+
+recorder:
+  purge_interval: 1
+  purge_keep_days: 3
+  db_url: sqlite:////tmp/home-assistant.db
+  exclude:
+    domains:
+      - automation
+    entities:
+      - sun.sun
 
