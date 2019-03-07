@@ -6,6 +6,12 @@ homeassistant:
   unit_system: metric
   time_zone: Asia/Shanghai
   customize: !include customize.yaml
+  # to be removed in the future
+  auth_providers:
+    - type: legacy_api_password
+
+http:
+  api_password: !secret http_password
 
 default_config:
 
@@ -26,6 +32,7 @@ script: !include scripts.yaml
 homekit:
 
 frontend:
+  themes: !include themes.yaml
 
 config:
 
@@ -38,6 +45,12 @@ recorder:
   exclude:
     domains:
       - automation
+      - group
+      - device_tracker
+      - persistent_notification
+      - zone
     entities:
       - sun.sun
+
+ios:
 
