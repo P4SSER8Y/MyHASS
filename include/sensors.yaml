@@ -1,3 +1,11 @@
 - platform: iio_dht
   scan_interval: 150
+- platform: systemmonitor
+  scan_interval: 15
+  resources:
+    - type: processor_use
+    - type: memory_use_percent
+    - type: disk_use_percent
+      arg: /
+    - type: last_boot
 

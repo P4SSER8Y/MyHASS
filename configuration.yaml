@@ -40,15 +40,10 @@ recorder:
   purge_interval: 1
   purge_keep_days: 3
   db_url: sqlite:////tmp/home-assistant.db
-  exclude:
-    domains:
-      - automation
-      - group
-      - device_tracker
-      - persistent_notification
-      - zone
+  include:
     entities:
-      - sun.sun
+      - sensor.iio_dht_temperature
+      - sensor.iio_dht_humidity
 
 ios:
 
