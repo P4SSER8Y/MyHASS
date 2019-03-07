@@ -7,5 +7,13 @@
     - type: memory_use_percent
     - type: disk_use_percent
       arg: /
-    - type: last_boot
+- platform: uptime
+  name: HASS Uptime
+  unit_of_measurement: hours
+- platform: command_line
+  command: "uptime | sed 's/.*up\\s*//' | sed 's/,\\s\\+load.*//'"
+  name: System Uptime
+- platform: command_line
+  command: "uptime | sed 's/.*average://'"
+  name: System Load
 
