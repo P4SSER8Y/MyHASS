@@ -1,7 +1,7 @@
 homeassistant:
   name: Home
-  latitude: 30.580100000000002
-  longitude: 114.2734
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
   elevation: 0
   unit_system: metric
   time_zone: Asia/Shanghai
