@@ -15,9 +15,7 @@ http:
 
 default_config:
 
-sensor:
-  - platform: iio_dht
-    scan_interval: 150
+sensor: !include include/sensors.yaml
 
 switch:
   - platform: direct_gpio
