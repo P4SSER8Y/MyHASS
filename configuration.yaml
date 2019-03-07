@@ -5,7 +5,7 @@ homeassistant:
   elevation: 0
   unit_system: metric
   time_zone: Asia/Shanghai
-  customize: !include customize.yaml
+  customize: !include include/customize.yaml
   # to be removed in the future
   auth_providers:
     - type: legacy_api_password
@@ -25,14 +25,14 @@ switch:
     port: 26
     inverted: false
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+group: !include include/groups.yaml
+automation: !include include/automations.yaml
+script: !include include/scripts.yaml
 
 homekit:
 
 frontend:
-  themes: !include themes.yaml
+  themes: !include include/themes.yaml
 
 config:
 

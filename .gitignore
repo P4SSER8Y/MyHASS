@@ -9,6 +9,9 @@
 !/custom_components/
 !/custom_components/*
 !/custom_components/**
+!/include/
+!/include/*
+!/include/**
 
 
 .storage
