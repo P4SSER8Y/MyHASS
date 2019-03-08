@@ -32,7 +32,7 @@ class DHTHumidity(Entity):
         while not flag:
             try:
                 with open("/sys/devices/platform/dht11@0/iio:device0/in_humidityrelative_input", "r") as f:
-                    self._state = round(float(f.readline()) / 1000.0)
+                    self._state = "{:0.0f}".format(float(f.readline()) / 1000.0)
                 flag = True
             except:
                 sleep(1)
@@ -63,7 +63,7 @@ class DHTTemperature(Entity):
         while not flag:
             try:
                 with open("/sys/devices/platform/dht11@0/iio:device0/in_temp_input", "r") as f:
-                    self._state = round(float(f.readline()) / 1000.0, 1)
+                    self._state = "{:0.1f}".format(float(f.readline()) / 1000.0)
                 flag = True
             except:
                 sleep(1)

@@ -1,5 +1,6 @@
 - platform: iio_dht
   scan_interval: 150
+
 - platform: systemmonitor
   scan_interval: 15
   resources:
@@ -7,12 +8,15 @@
     - type: memory_use_percent
     - type: disk_use_percent
       arg: /
+
 - platform: uptime
   name: HASS Uptime
   unit_of_measurement: hours
+
 - platform: command_line
   command: "uptime | sed 's/.*up\\s*//' | sed 's/,\\s\\+load.*//'"
   name: System Uptime
+
 - platform: command_line
   command: "uptime | sed 's/.*average://'"
   name: System Load
