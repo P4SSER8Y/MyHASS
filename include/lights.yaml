@@ -1,0 +1,4 @@
+- platform: switch
+  name: desktop lamp
+  entity_id: switch.gpio26
+

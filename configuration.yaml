@@ -17,6 +17,8 @@ default_config:
 
 sensor: !include include/sensors.yaml
 
+light: !include include/lights.yaml
+
 switch:
   - platform: direct_gpio
     name: GPIO26
@@ -44,8 +46,4 @@ recorder:
     entities:
       - sensor.iio_dht_temperature
       - sensor.iio_dht_humidity
-
-ios:
-
-system_health:
 
