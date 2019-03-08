@@ -7,7 +7,6 @@ homeassistant:
   time_zone: Asia/Shanghai
   customize: !include include/customize.yaml
 
-default_config: 
 sensor: !include include/sensors.yaml 
 light: !include include/lights.yaml 
 switch: !include include/switches.yaml 
@@ -19,5 +18,6 @@ frontend:
   themes: !include include/themes.yaml 
 config: 
 logbook: 
+history:
 recorder: !include include/recorder.yaml
 
