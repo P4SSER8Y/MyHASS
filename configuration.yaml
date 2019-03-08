@@ -7,37 +7,17 @@ homeassistant:
   time_zone: Asia/Shanghai
   customize: !include include/customize.yaml
 
-default_config:
-
-sensor: !include include/sensors.yaml
-
-light: !include include/lights.yaml
-
-switch:
-  - platform: direct_gpio
-    name: GPIO26
-    port: 26
-    inverted: false
-
+default_config: 
+sensor: !include include/sensors.yaml 
+light: !include include/lights.yaml 
+switch: !include include/switches.yaml 
 group: !include include/groups.yaml
 automation: !include include/automations.yaml
-script: !include include/scripts.yaml
-
-homekit:
-
+script: !include include/scripts.yaml 
+homekit: 
 frontend:
-  themes: !include include/themes.yaml
-
-config:
-
-logbook:
-
-recorder:
-  purge_interval: 1
-  purge_keep_days: 3
-  db_url: sqlite:////tmp/home-assistant.db
-  include:
-    entities:
-      - sensor.iio_dht_temperature
-      - sensor.iio_dht_humidity
+  themes: !include include/themes.yaml 
+config: 
+logbook: 
+recorder: !include include/recorder.yaml
 

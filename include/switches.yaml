@@ -1,0 +1,5 @@
+- platform: direct_gpio
+  name: GPIO26
+  port: 26
+  inverted: false
+
