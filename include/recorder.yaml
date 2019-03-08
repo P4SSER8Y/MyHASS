@@ -5,4 +5,5 @@ include:
   entities:
     - sensor.iio_dht_temperature
     - sensor.iio_dht_humidity
+    - sensor.max44009_0x4a
 

@@ -21,3 +21,6 @@
   command: "uptime | sed 's/.*average://'"
   name: System Load
 
+- platform: MAX44009
+  scan_interval: 30
+
