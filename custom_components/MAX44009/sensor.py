@@ -5,6 +5,7 @@ _LOGGER = logging.getLogger(__name__)
 from homeassistant.helpers.entity import Entity
 from homeassistant.const import DEVICE_CLASS_ILLUMINANCE 
 import smbus
+import math
 
 REQUIREMENTS = ['smbus']
 
@@ -45,7 +46,8 @@ class MAX44009(Entity):
         return DEVICE_CLASS_ILLUMINANCE
 
     def update(self):
-        self._state = int(round(read_light_value(self._addr)))
+	# ceil to 0.05n lx
+        self._state = "{:0.2f}".format(math.ceil((read_light_value(self._addr) + 0.001) * 20) / 20)
 
 if __name__ == "__main__":
     print(read_light_value())
