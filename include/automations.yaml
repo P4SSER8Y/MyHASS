@@ -1,1 +1,9 @@
-[]
+- alias: 'toggle the lamp through mqtt'
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: hass/dorm/desk/lamp/toggle
+  action:
+    service: light.toggle
+    entity_id: light.desktop_lamp
+
