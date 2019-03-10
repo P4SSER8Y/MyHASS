@@ -1,5 +1,5 @@
-- platform: iio_dht
-  scan_interval: 150
+#- platform: iio_dht
+#  scan_interval: 150
 
 - platform: systemmonitor
   scan_interval: 15
