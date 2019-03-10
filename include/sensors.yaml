@@ -24,3 +24,6 @@
 - platform: MAX44009
   scan_interval: 30
 
+- platform: SHT31
+  scan_interval: 120
+
