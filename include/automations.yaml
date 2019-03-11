@@ -7,3 +7,13 @@
     service: light.toggle
     entity_id: light.desktop_lamp
 
+- alias: 'notify me at startup'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: bark.bark
+    data:
+      title: "Home Assistant"
+      message: "Guten Tag!"
+
