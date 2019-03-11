@@ -1,10 +1,9 @@
 # ignore everything
-*
+/*
+/**
 
-!*.sh
-!*.yaml
-!.gitignore
-!.gitmodules
+!configuration.yaml
+!.git*
 !*.md
 !/custom_components/
 !/custom_components/*
@@ -15,13 +14,7 @@
 !/util/
 !/util/*
 !/util/**
-
-
-.storage
-.cloud
-.google.token
-
-ip_bans.yaml
-secrets.yaml
-known_devices.yaml
+!/python_scripts/
+!/python_scripts/*
+!/python_scripts/**
 
