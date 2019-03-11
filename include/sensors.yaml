@@ -27,3 +27,9 @@
 - platform: SHT31
   scan_interval: 120
 
+- platform: mqtt
+  name: "remain_power"
+  state_topic: "hass/dorm/power"
+  unit_of_measurement: "kWh"
+  value_template: "{{ value_json.remain }}"
+
