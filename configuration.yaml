@@ -12,6 +12,7 @@ light: !include include/lights.yaml
 switch: !include include/switches.yaml 
 group: !include include/groups.yaml
 automation: !include include/automations.yaml
+python_script:
 script: !include include/scripts.yaml 
 homekit: 
 frontend:
@@ -23,4 +24,6 @@ recorder: !include include/recorder.yaml
 mqtt: !include include/mqtt.yaml
 system_health:
 
+bark:
+  url: !secret bark_url
 
