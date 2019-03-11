@@ -21,4 +21,6 @@ logbook:
 history:
 recorder: !include include/recorder.yaml
 mqtt: !include include/mqtt.yaml
+system_health:
+
 
