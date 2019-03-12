@@ -34,8 +34,9 @@
       value_template: "{{ '%0.1f' | format(states('sensor.raw_hass_uptime') | float) }}"
 
 - platform: command_line
-  command: "uptime | sed 's/.*up\\s*//' | sed 's/,\\s\\+load.*//'"
+  command: "cat /proc/uptime"
   name: System Uptime
+  value_template: "{{ '%0.1f hours' | format(float(value.split(' ')[0])/3600 | round(1)) }}"
 
 - platform: command_line
   command: "uptime | sed 's/.*average://'"
