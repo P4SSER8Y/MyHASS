@@ -8,10 +8,30 @@
     - type: memory_use_percent
     - type: disk_use_percent
       arg: /
+- platform: template
+  sensors:
+    fmt_processor_use:
+      friendly_name: "CPU"
+      unit_of_measurement: "%"
+      value_template: "{{ states('sensor.processor_use') | round }}"
+    fmt_memory_use_percent:
+      friendly_name: "Memory"
+      unit_of_measurement: "%"
+      value_template: "{{ states('sensor.memory_use_percent') | round}}"
+    fmt_disk_use_percent:
+      friendly_name: "Disk"
+      unit_of_measurement: "%"
+      value_template: "{{ states('sensor.disk_use_percent') | round }}"
 
 - platform: uptime
-  name: HASS Uptime
+  name: Raw HASS Uptime
   unit_of_measurement: hours
+- platform: template
+  sensors: 
+    hass_uptime:
+      friendly_name: "HASS Uptime"
+      unit_of_measurement: hours
+      value_template: "{{ '%0.1f' | format(states('sensor.raw_hass_uptime') | float) }}"
 
 - platform: command_line
   command: "uptime | sed 's/.*up\\s*//' | sed 's/,\\s\\+load.*//'"
