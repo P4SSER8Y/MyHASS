@@ -8,6 +8,7 @@
     entity_id: light.desktop_lamp
 
 - alias: 'notify me at startup'
+  initial_state: true
   trigger:
     platform: homeassistant
     event: start
