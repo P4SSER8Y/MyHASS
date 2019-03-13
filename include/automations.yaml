@@ -29,4 +29,11 @@
       title: "Home Assistant"
       message: "{{ trigger.payload }}"
 
+- alias: 'go to bed'
+  initial_state: true
+  trigger: 
+    platform: time
+    at: '23:00:00'
+  action:
+    service: script.blink_the_lamp
 
