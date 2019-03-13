@@ -18,3 +18,15 @@
       title: "Home Assistant"
       message: "Guten Tag!"
 
+- alias: 'notify admins'
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: /hass/util/admin/notify
+  action:
+    service: bark.bark
+    data_template:
+      title: "Home Assistant"
+      message: "{{ trigger.payload }}"
+
+
