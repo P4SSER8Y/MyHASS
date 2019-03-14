@@ -60,3 +60,13 @@
   unit_of_measurement: "°C"
   value_template: "{{ '%0.1f' | format(value | float | multiply(0.001)) }}"
 
+- platform: bandwagonhost
+  veid: !secret bwh_veid
+  api_key: !secret bwh_api
+  monitored_conditions:
+    - VPS_STATE
+    - CURRENT_BANDWIDTH_USED
+    - RAM_USED
+    - DISK_USED
+    - SWAP_USED
+

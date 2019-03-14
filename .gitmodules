@@ -1,0 +1,3 @@
+[submodule "custom_components/bandwagonhost"]
+	path = custom_components/bandwagonhost
+	url = git@github.com:P4SSER8Y/homeassistant-bandwagonhost.git
