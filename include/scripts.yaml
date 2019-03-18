@@ -19,6 +19,16 @@ blink_the_lamp:
     - service: light.toggle
       data:
         entity_id: light.desktop_lamp
+    - delay:
+        milliseconds: 500
+    - service: light.toggle
+      data:
+        entity_id: light.desktop_lamp
+    - delay:
+        milliseconds: 500
+    - service: light.toggle
+      data:
+        entity_id: light.desktop_lamp
   
 guten_abend:
   alias: Guten Abend!
