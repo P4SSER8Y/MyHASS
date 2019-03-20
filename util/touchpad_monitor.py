@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
+import sys
 import logging
-LOGGER = logging.getLogger(__name__)
-LOGGER.setLevel(logging.DEBUG)
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 import paho.mqtt.publish as publish
 import wiringpi
@@ -14,7 +14,7 @@ script_file = os.path.realpath(__file__)
 yaml_file = os.path.join(os.path.dirname(script_file), '../secrets.yaml')
 
 data = None
-LOGGER.info('parse secrets.yaml')
+logging.info('parse secrets.yaml')
 with open(yaml_file, 'r') as f:
     data = load(f)
 
@@ -25,14 +25,18 @@ MQTT_AUTH = {
 
 if __name__ == "__main__":
     port = data['gpio_touchpad_port']
-    LOGGER.info('setup GPIO{} as input port')
+    logging.info('setup GPIO%02d as input port', port)
     wiringpi.wiringPiSetupSys()
+    if not os.path.exists('/sys/class/gpio/gpio{:d}'.format(port)):
+        logging.warning('setup GPIO with wiringpi failed')
+        with open('/sys/class/gpio/export', 'w') as f:
+            f.write('{:d}\n'.format(port))
     wiringpi.pinMode(port, wiringpi.INPUT)
 
-    LOGGER.info('enter polling')
+    logging.info('enter polling')
     while True:
         if wiringpi.digitalRead(port) == wiringpi.HIGH:
-            LOGGER.info('detect rising edge')
+            logging.info('detect rising edge')
             publish.single('hass/dorm/desk/lamp/toggle', 
                 hostname=data['mqtt_broker'],
                 port=data['mqtt_port'],
@@ -40,6 +44,6 @@ if __name__ == "__main__":
             sleep(0.5)
             while wiringpi.digitalRead(port) == wiringpi.HIGH:
                 sleep(0.1)
-            LOGGER.info('detect falling edge')
+            logging.info('detect falling edge')
         sleep(0.1)
 
