@@ -3,7 +3,7 @@ purge_keep_days: 3
 db_url: sqlite:////tmp/home-assistant.db
 include:
   entities:
-    - sensor.max44009_0x4a
+    - sensor.desktop_luminous
     - sensor.sht31_temperature_0x44
     - sensor.sht31_humidity_0x44
     - sensor.remain_power
