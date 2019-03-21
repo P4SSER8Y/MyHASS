@@ -1,29 +1,42 @@
 #!/usr/bin/env python3
 import logging
-_LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
 from homeassistant.helpers.entity import Entity
 from homeassistant.const import DEVICE_CLASS_HUMIDITY, DEVICE_CLASS_TEMPERATURE, TEMP_CELSIUS
 import smbus
 import math
 from time import sleep, time
+from datetime import timedelta
 
 REQUIREMENTS = ['smbus']
+SCAN_INTERVAL = timedelta(seconds=60)
 
 bus = smbus.SMBus(1)
 base_addr = 0x44
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
-    sensor = SHT31_Client(base_addr, 60)
-    add_devices([SHT31_Temperature(sensor), SHT31_Humidity(sensor)])
+    addr0 = config.get('addr0', 0)
+    SCAN_INTERVAL = config.get('scan_interval', timedelta(seconds=60))
+    LOGGER.info("hello world")
+    sensor = SHT31_Client(base_addr | addr0, SCAN_INTERVAL)
+    sensor_list = []
+    if config.get('sensors', None):
+        if config.get('sensors').get('temperature'):
+            sensor_list.append(SHT31_Temperature(sensor, config.get('sensors').get('temperature').get('name', None)))
+        if config.get('sensors').get('humidity'):
+            sensor_list.append(SHT31_Humidity(sensor, config.get('sensors').get('humidity').get('name', None)))
+    else:
+        sensor_list = [SHT31_Temperature(sensor), SHT31_Humidity(sensor)]
+    add_devices(sensor_list)
 
 
 class SHT31_Client():
-    def __init__(self, addr, update_interval=0):
+    def __init__(self, addr, update_interval=timedelta(seconds=60)):
         self._addr = addr
         self._temperature = None
         self._humidity = None
-        self._interval = update_interval
+        self._interval = update_interval.total_seconds()
         self._last_update_time = 0
         self.update()
 
@@ -42,10 +55,10 @@ class SHT31_Client():
         if self._last_update_time + self._interval > time():
             return
         self._last_update_time = time()
-        _LOGGER.info("querying")
+        LOGGER.info("querying")
         bus.write_i2c_block_data(self._addr, 0x2C, [0x06])
         sleep(0.5)
-        _LOGGER.info("retrieving data")
+        LOGGER.info("retrieving data")
         data = bus.read_i2c_block_data(self._addr, 0x00, 6)
         raw_temperature = (data[0] << 8) | data[1]
         raw_humidity = (data[3] << 8) | data[4]
@@ -54,14 +67,18 @@ class SHT31_Client():
         
 
 class SHT31_Temperature(Entity):
-    def __init__(self, sensor):
+    def __init__(self, sensor, name=None):
         self._sensor = sensor
         self._state = None
+        if name:
+            self._name = name
+        else:
+            self._name = 'SHT31_Temperature_0x{:02X}'.format(self._sensor._addr)
         self.update()
 
     @property
     def name(self):
-        return 'SHT31_Temperature_0x{:02X}'.format(self._sensor._addr)
+        return self._name
 
     @property
     def state(self):
@@ -81,14 +98,18 @@ class SHT31_Temperature(Entity):
 
 
 class SHT31_Humidity(Entity):
-    def __init__(self, sensor):
+    def __init__(self, sensor, name=None):
         self._sensor = sensor
         self._state = None
+        if name:
+            self._name = name
+        else:
+            self._name = 'SHT31_Humidity_0x{:02X}'.format(self._sensor._addr)
         self.update()
 
     @property
     def name(self):
-        return 'SHT31_Humidity_0x{:02X}'.format(self._sensor._addr)
+        return self._name
 
     @property
     def state(self):
@@ -108,7 +129,7 @@ class SHT31_Humidity(Entity):
 
 
 if __name__ == "__main__":
-    _LOGGER.setLevel(logging.INFO)
+    LOGGER.setLevel(logging.INFO)
     sensor = SHT31_Client(base_addr)
     print("Temperature: {:0.2f}\nHumidity: {:0.2f}%".format(sensor.temperature, sensor.humidity))
 

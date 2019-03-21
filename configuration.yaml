@@ -23,6 +23,8 @@ history:
 recorder: !include include/recorder.yaml
 mqtt: !include include/mqtt.yaml
 system_health:
+logger:
+  default: info
 
 bark:
   url: !secret bark_url

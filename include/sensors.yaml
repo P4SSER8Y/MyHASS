@@ -49,6 +49,11 @@
 
 - platform: SHT31
   scan_interval: 120
+  sensors:
+    temperature:
+      name: desktop temperature
+    humidity:
+      name: desktop humidity
 
 - platform: mqtt
   name: "remain_power"

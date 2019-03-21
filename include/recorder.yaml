@@ -4,7 +4,7 @@ db_url: sqlite:////tmp/home-assistant.db
 include:
   entities:
     - sensor.desktop_luminous
-    - sensor.sht31_temperature_0x44
-    - sensor.sht31_humidity_0x44
+    - sensor.desktop_temperature
+    - sensor.desktop_humidity
     - sensor.remain_power
 
