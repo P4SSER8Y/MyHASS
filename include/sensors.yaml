@@ -44,7 +44,7 @@
 
 - platform: MAX44009
   scan_interval: 30
-  name: "desktop_luminous"
+  name: "desktop luminous"
   addr0: 0
 
 - platform: SHT31
