@@ -15,8 +15,7 @@ automation: !include include/automations.yaml
 python_script:
 script: !include include/scripts.yaml 
 homekit: 
-frontend:
-  themes: !include include/themes.yaml 
+frontend: !include include/frontend.yaml
 config: 
 logbook: 
 history:

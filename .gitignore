@@ -18,3 +18,7 @@
 !/python_scripts/*
 !/python_scripts/**
 
+!/www/
+!/www/*
+!/www/**
+

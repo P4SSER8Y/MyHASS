@@ -1,0 +1,6 @@
+  themes: !include themes.yaml 
+  extra_html_url:
+    - /local/hass-fontawesome/hass-fontawesome-solid.html
+    - /local/hass-fontawesome/hass-fontawesome-regular.html
+    - /local/hass-fontawesome/hass-fontawesome-brands.html
+
