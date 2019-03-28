@@ -77,3 +77,10 @@
     - DISK_USED
     - SWAP_USED
 
+- platform: command_line
+  name: latest HA version
+  scan_interval: 86400
+  command: python3 -c "import requests; print(requests.get('https://pypi.python.org/pypi/homeassistant/json').json()['info']['version'])"
+
+- platform: version
+  name: current HA version
