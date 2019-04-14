@@ -2,7 +2,7 @@
   initial_state: true
   trigger:
     platform: mqtt
-    topic: hass/dorm/desk/lamp/toggle
+    topic: hass/rpi/touchpad
   action:
     service: light.toggle
     entity_id: light.desktop_lamp

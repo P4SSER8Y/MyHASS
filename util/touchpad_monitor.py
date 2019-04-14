@@ -37,7 +37,7 @@ if __name__ == "__main__":
     while True:
         if wiringpi.digitalRead(port) == wiringpi.HIGH:
             logging.info('detect rising edge')
-            publish.single('hass/dorm/desk/lamp/toggle', 
+            publish.single('hass/rpi/touchpad', 
                 hostname=data['mqtt_broker'],
                 port=data['mqtt_port'],
                 auth=MQTT_AUTH)
