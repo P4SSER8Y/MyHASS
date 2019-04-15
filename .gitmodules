@@ -1,6 +1,6 @@
 [submodule "custom_components/bandwagonhost"]
 	path = custom_components/bandwagonhost
-	url = git@github.com:P4SSER8Y/homeassistant-bandwagonhost.git
+	url = https://github.com/P4SSER8Y/homeassistant-bandwagonhost.git
 [submodule "www/hass-fontawesome"]
 	path = www/hass-fontawesome
 	url = https://github.com/thomasloven/hass-fontawesome.git
