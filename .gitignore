@@ -5,15 +5,19 @@
 !configuration.yaml
 !.git*
 !*.md
+
 !/custom_components/
 !/custom_components/*
 !/custom_components/**
+
 !/include/
 !/include/*
 !/include/**
+
 !/util/
 !/util/*
 !/util/**
+
 !/python_scripts/
 !/python_scripts/*
 !/python_scripts/**
@@ -21,4 +25,8 @@
 !/www/
 !/www/*
 !/www/**
+
+!/docs/
+!/docs/*
+!/docs/**
 
