@@ -1,0 +1,9 @@
+{
+  "domain": "iio_dht",
+  "name": "DHT Sensor from IIO",
+  "documentation": "https://github.com/P4SSER8Y/MyHASS",
+  "dependencies": [],
+  "codeowners": ["@P4SSER8Y"],
+  "requirements": []
+ }
+

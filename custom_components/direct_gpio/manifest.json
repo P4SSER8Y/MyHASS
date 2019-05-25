@@ -1,0 +1,9 @@
+{
+  "domain": "direct_gpio",
+  "name": "Raspberry Pi Direct GPIO",
+  "documentation": "https://github.com/P4SSER8Y/MyHASS",
+  "dependencies": [],
+  "codeowners": ["@P4SSER8Y"],
+  "requirements": []
+ }
+

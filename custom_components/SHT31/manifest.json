@@ -1,0 +1,9 @@
+{
+  "domain": "SHT31",
+  "name": "Temperature and Humidity Sensor-SHT31",
+  "documentation": "https://github.com/P4SSER8Y/MyHASS",
+  "dependencies": [],
+  "codeowners": ["@P4SSER8Y"],
+  "requirements": []
+ }
+

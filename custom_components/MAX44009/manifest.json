@@ -1,0 +1,9 @@
+{
+  "domain": "MAX44009",
+  "name": "Light Intensity Sensor-Max44009",
+  "documentation": "https://github.com/P4SSER8Y/MyHASS",
+  "dependencies": [],
+  "codeowners": ["@P4SSER8Y"],
+  "requirements": []
+ }
+
