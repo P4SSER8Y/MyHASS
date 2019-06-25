@@ -30,3 +30,5 @@
 !/docs/*
 !/docs/**
 
+*.un~
+__pycache__

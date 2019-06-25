@@ -1,6 +1,3 @@
-#- platform: iio_dht
-#  scan_interval: 150
-
 - platform: systemmonitor
   scan_interval: 15
   resources:
@@ -8,30 +5,10 @@
     - type: memory_use_percent
     - type: disk_use_percent
       arg: /
-- platform: template
-  sensors:
-    fmt_processor_use:
-      friendly_name: "CPU"
-      unit_of_measurement: "%"
-      value_template: "{{ states('sensor.processor_use') | round }}"
-    fmt_memory_use_percent:
-      friendly_name: "Memory"
-      unit_of_measurement: "%"
-      value_template: "{{ states('sensor.memory_use_percent') | round}}"
-    fmt_disk_use_percent:
-      friendly_name: "Disk"
-      unit_of_measurement: "%"
-      value_template: "{{ states('sensor.disk_use_percent') | round }}"
 
 - platform: uptime
-  name: Raw HASS Uptime
+  name: HASS Uptime
   unit_of_measurement: hours
-- platform: template
-  sensors: 
-    hass_uptime:
-      friendly_name: "HASS Uptime"
-      unit_of_measurement: hours
-      value_template: "{{ '%0.1f' | format(states('sensor.raw_hass_uptime') | float) }}"
 
 - platform: command_line
   command: "cat /proc/uptime"
@@ -42,40 +19,24 @@
   command: "uptime | sed 's/.*average://'"
   name: System Load
 
-- platform: MAX44009
-  scan_interval: 30
-  name: "desktop luminous"
-  addr0: 0
+#- platform: MAX44009
+  #scan_interval: 30
+  #name: "desktop luminous"
+  #addr0: 0
 
-- platform: SHT31
-  scan_interval: 120
-  sensors:
-    temperature:
-      name: desktop temperature
-    humidity:
-      name: desktop humidity
-
-- platform: mqtt
-  name: "remain_power"
-  state_topic: "hass/dorm/power"
-  unit_of_measurement: "kWh"
-  value_template: "{{ value_json.remain }}"
+#- platform: SHT31
+  #scan_interval: 120
+  #sensors:
+    #temperature:
+      #name: desktop temperature
+    #humidity:
+      #name: desktop humidity
 
 - platform: command_line
   name: CPU Temperature
   command: "cat /sys/class/thermal/thermal_zone0/temp"
   unit_of_measurement: "°C"
   value_template: "{{ '%0.1f' | format(value | float | multiply(0.001)) }}"
-
-- platform: bandwagonhost
-  veid: !secret bwh_veid
-  api_key: !secret bwh_api
-  monitored_conditions:
-    - VPS_STATE
-    - CURRENT_BANDWIDTH_USED
-    - RAM_USED
-    - DISK_USED
-    - SWAP_USED
 
 - platform: command_line
   name: latest HA version
@@ -84,3 +45,4 @@
 
 - platform: version
   name: current HA version
+
