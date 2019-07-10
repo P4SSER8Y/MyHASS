@@ -1,0 +1,27 @@
+awtrix_air:
+  sequence:
+  - data:
+      payload_template: '{"name":"temperature", "force": false, "text":"{{ states(''sensor.bedroom_temperature'')
+        | round(1) }} C","icon":609, "color": [0,128,128]}"'
+      topic: awtrix/app
+    service: mqtt.publish
+  - delay: '1'
+  - data:
+      payload_template: '{"name":"humidity", "force": false, "text":"{{ states(''sensor.bedroom_humidity'')
+        | round(1) }} %","icon":693, "color": [0,128,128]}'
+      topic: awtrix/app
+    service: mqtt.publish
+'1562756469474':
+  alias: Turn On AWTRIX
+  sequence:
+  - data:
+      payload: '{"power": true}'
+      topic: awtrix/basics
+    service: mqtt.publish
+'1562756489679':
+  alias: Turn Off AWTRIX
+  sequence:
+  - data:
+      payload: '{"power": false}'
+      topic: awtrix/basics
+    service: mqtt.publish

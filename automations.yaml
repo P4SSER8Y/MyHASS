@@ -1,0 +1,32 @@
+- id: c695ce304099435d93e5ecee7cb5f1f7
+  alias: notify me at startup
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      message: Guten Tag!
+      title: Home Assistant
+    service: bark.bark
+  initial_state: true
+- alias: notify admins
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: /hass/util/admin/notify
+  action:
+    service: bark.bark
+    data_template:
+      title: Home Assistant
+      message: '{{ trigger.payload }}'
+  id: 4ce2a243d8444de7bc6bf56f45fd45db
+- id: '1562751095365'
+  alias: awtrix
+  trigger:
+  - hours: '*'
+    minutes: '*'
+    platform: time_pattern
+    seconds: /30
+  condition: []
+  action:
+  - service: script.awtrix_air

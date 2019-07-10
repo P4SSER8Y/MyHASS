@@ -46,3 +46,7 @@
 - platform: version
   name: current HA version
 
+- platform: sht31
+  name: bedroom
+  i2c_address: 0x44
+

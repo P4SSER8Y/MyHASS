@@ -11,9 +11,9 @@ sensor: !include include/sensors.yaml
 light: !include include/lights.yaml 
 switch: !include include/switches.yaml 
 group: !include include/groups.yaml
-automation: !include include/automations.yaml
+automation: !include automations.yaml
 python_script:
-script: !include include/scripts.yaml 
+script: !include scripts.yaml 
 homekit: 
 frontend: !include include/frontend.yaml
 config: 
